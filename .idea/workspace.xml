@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="22290c1f-4805-4757-a332-c9fee3895725" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/back/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dropzone.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dropzone.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/FileZone.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +45,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584970475501</updated>
-      <workItem from="1584970478540" duration="10640000" />
+      <workItem from="1584970478540" duration="10890000" />
     </task>
     <servers />
   </component>
