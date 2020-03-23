@@ -13,14 +13,14 @@ const Dropzone = () => {
     fileInputRef.current.click();
   };
 
-  const onAdd = evt => {
-    const filesTransfer = evt.target.files;
+  const onAdd = e => {
+    const filesTransfer = e.target.files;
     const array = fileListToArray(filesTransfer);
     setFiles([...files, ...array]);
   };
 
-  const onDragOver = evt => {
-    evt.preventDefault();
+  const onDragOver = e => {
+    e.preventDefault();
     setHighlight(true);
   };
 
