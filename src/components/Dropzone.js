@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Dropzone.css";
 import FileZone from "./FileZone";
 
-const Dropzone = ({ onFilesAdded, disabled = false }) => {
+const Dropzone = () => {
   const [highlight, setHighlight] = useState(false);
 
   const [files, setFiles] = useState([]);
@@ -10,16 +10,13 @@ const Dropzone = ({ onFilesAdded, disabled = false }) => {
   const fileInputRef = React.createRef();
 
   const openFileDialog = () => {
-    if (disabled) return;
     fileInputRef.current.click();
   };
 
   const onAdd = evt => {
-    if (disabled) return;
-    const files = evt.target.files;
-    const array = fileListToArray(files);
-    onFilesAdded(array);
-    setFiles(array);
+    const filesTransfer = evt.target.files;
+    const array = fileListToArray(filesTransfer);
+    setFiles([...files, ...array]);
   };
 
   const onDragOver = evt => {
@@ -33,13 +30,9 @@ const Dropzone = ({ onFilesAdded, disabled = false }) => {
 
   const onDrop = event => {
     event.preventDefault();
-
-    const files = event.dataTransfer.files;
-    // to put the data in the input, for the formData.
-    const input = document.getElementById("inputZip");
-    input.files = files;
-    const array = fileListToArray(files);
-    setFiles(array);
+    const filesTransfer = event.dataTransfer.files;
+    const array = fileListToArray(filesTransfer);
+    setFiles([...files, ...array]);
     setHighlight(false);
   };
 
@@ -53,12 +46,13 @@ const Dropzone = ({ onFilesAdded, disabled = false }) => {
 
   const deleteFile = id => {
     files.splice(id, 1);
-    setFiles([...files]);
+    setFiles([...files])
   };
 
   const onSubmit = e => {
     e.preventDefault();
-    const form = new FormData(e.target);
+    const form = new FormData();
+    files.map(file => form.append("filesInput", file));
     const request = new XMLHttpRequest();
     request.open("POST", "http://localhost:8000/upload-files");
     request.send(form);
@@ -82,7 +76,7 @@ const Dropzone = ({ onFilesAdded, disabled = false }) => {
           onClick={openFileDialog}
           style={{ cursor: "pointer" }}
         >
-          <img src={require("../assets/images/upload.png")}className="Icon" alt="upload Image" />
+          <img src={require("../assets/images/upload.png")} className="Icon" alt="upload files" />
           <input
             ref={fileInputRef}
             className="FileInput"
