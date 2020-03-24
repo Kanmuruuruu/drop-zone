@@ -9,6 +9,7 @@
     justify-content: center;
     flex-direction: column;
     font-size: 16px;
+    cursor: pointer;
 }
 
 .Highlight {
@@ -23,4 +24,11 @@
 
 .FileInput {
     display: none;
+}
+
+.formDropzone input[type='submit']{
+    cursor: pointer;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
 }

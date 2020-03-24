@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "./Dropzone.css";
 import FileZone from "./FileZone";
+import Modal from "./Modal/Modal";
 
 const Dropzone = ({ urlToUpload }) => {
   const [highlight, setHighlight] = useState(false);
 
   const [files, setFiles] = useState([]);
+
+  const [message, setMessage] = useState({});
 
   const fileInputRef = React.createRef();
 
@@ -46,37 +49,61 @@ const Dropzone = ({ urlToUpload }) => {
 
   const deleteFile = id => {
     files.splice(id, 1);
-    setFiles([...files])
+    setFiles([...files]);
   };
 
   const onSubmit = async e => {
     e.preventDefault();
+    if (files.length === 0) return false;
     const form = new FormData();
     files.map(file => form.append("filesInput", file));
-
-    console.log('fetch');
-    const response  = await fetch(urlToUpload, {
+    const response = await fetch(urlToUpload, {
       method: "POST",
       headers: {
-        'Access-Control-Allow-Origin': 'http://localhost:3001'
+        "Access-Control-Allow-Origin": "http://localhost:3001"
       },
       body: form
     });
-    console.log(await response.json());
+    const messageFetch = await response.json();
+    console.log(messageFetch);
+    setMessage(messageFetch);
+    toggleModal();
+  };
+
+  const [showModal, setShowModal] = useState(false);
+  const toggleModal = () => {
+    setShowModal(!showModal);
   };
 
   return (
     <div>
-      <form onSubmit={onSubmit} encType="multipart/form-data" method="POST">
+      <Modal
+        show={showModal}
+        closeCallback={toggleModal}
+        customClass="custom_modal_class"
+      >
+        <React.Fragment>
+          {message.message}
+        </React.Fragment>
+      </Modal>
+      <form
+        className="formDropzone"
+        onSubmit={onSubmit}
+        encType="multipart/form-data"
+        method="POST"
+      >
         <div
           className={`Dropzone ${highlight ? "Highlight" : ""}`}
           onDragOver={onDragOver}
           onDragLeave={onDragLeave}
           onDrop={onDrop}
           onClick={openFileDialog}
-          style={{ cursor: "pointer" }}
         >
-          <img src={require("../assets/images/upload.png")} className="Icon" alt="upload files" />
+          <img
+            src={require("../assets/images/upload.png")}
+            className="Icon"
+            alt="upload files"
+          />
           <input
             ref={fileInputRef}
             className="FileInput"
