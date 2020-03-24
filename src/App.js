@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Dropzone from "./components/Dropzone";
 import "./App.css";
-import ArianeFil from "./components/ArianeFil/ArianeFil";
+import ProgressBar from "./components/ArianeFil/ProgressBar";
 
 const App = () => {
   const [progressBar, setProgressBar] = useState([
@@ -13,7 +13,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <ArianeFil progressBar={progressBar} changeProgress={setProgressBar} />
+      <ProgressBar progressBar={progressBar} changeProgress={setProgressBar} />
       <div className="Card">
         <Dropzone urlToUpload={"http://localhost:8000/upload-files"} />
       </div>

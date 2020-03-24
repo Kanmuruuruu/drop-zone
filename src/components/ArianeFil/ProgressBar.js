@@ -1,13 +1,10 @@
 import React from "react";
-import "./ArianeFil.css";
+import "./ProgressBar.css";
 
-const ArianeFil = ({progressBar, changeProgress}) => {
-
+const ProgressBar = ({ progressBar, changeProgress }) => {
   const makeAllDone = array => {
     // to get the id of the last done.
-    const id = array.lastIndexOf(
-      array.find(element => element.done === true)
-    );
+    const id = array.lastIndexOf(array.find(element => element.done === true));
     console.log(id);
     return array.map((element, index) => {
       if (index < id) {
@@ -28,11 +25,7 @@ const ArianeFil = ({progressBar, changeProgress}) => {
     <div className="container">
       <ul className="progressbar">
         {progressBar.map((item, index) => (
-          <li
-            className={item.done && "active"}
-            id={index}
-            onClick={makeActive}
-          >
+          <li className={item.done && "active"} id={index} onClick={makeActive}>
             {item.text}
           </li>
         ))}
@@ -41,4 +34,4 @@ const ArianeFil = ({progressBar, changeProgress}) => {
   );
 };
 
-export default ArianeFil;
+export default ProgressBar;
