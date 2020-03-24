@@ -2,10 +2,10 @@ import React from 'react';
 
 import './modal.css';
 
-const Modal = ({ children, customClass, show, closeCallback }) => (
+const Modal = ({ children, customClass, show, closeCallback, success}) => (
   <div className={`modal ${customClass}`} style={{ display: show ? 'block' : 'none'}}>
     <div className="overlay" onClick={closeCallback}></div>
-    <div className="modal_content">
+    <div className="modal_content" style={{ backgroundColor: success ? 'lightgreen' : 'red'}}>
       {children}
       <button title="Close" className="close_modal" onClick={closeCallback}>
         Fermer

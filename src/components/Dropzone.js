@@ -81,6 +81,7 @@ const Dropzone = ({ urlToUpload }) => {
         show={showModal}
         closeCallback={toggleModal}
         customClass="custom_modal_class"
+        success={message.status}
       >
         <React.Fragment>
           {message.message}
