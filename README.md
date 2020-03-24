@@ -1,14 +1,14 @@
 # Start
 
-yarn install
+yarn install \n
 
-cd back
+cd back \n
 
-yarn install
+yarn install \n
 
-cd ..
+cd .. \n
 
-yarn start
+yarn start \n
 
 This will start a react application on the port 3001
 
