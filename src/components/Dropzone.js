@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Dropzone.css";
 import FileZone from "./FileZone";
 
-const Dropzone = () => {
+const Dropzone = ({ urlToUpload }) => {
   const [highlight, setHighlight] = useState(false);
 
   const [files, setFiles] = useState([]);
@@ -55,7 +55,7 @@ const Dropzone = () => {
     files.map(file => form.append("filesInput", file));
 
     console.log('fetch');
-    const response  = await fetch("http://localhost:8000/upload-files", {
+    const response  = await fetch(urlToUpload, {
       method: "POST",
       headers: {
         'Access-Control-Allow-Origin': 'http://localhost:3001'
