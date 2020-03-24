@@ -6,9 +6,9 @@ import ProgressBar from "./components/ArianeFil/ProgressBar";
 const App = () => {
   const [progressBar, setProgressBar] = useState([
     { text: "Login", done: false },
-    { text: "bien joué", done: false },
-    { text: "oups", done: false },
-    { text: "last", done: false }
+    { text: "Créer un nouveau patient", done: false },
+    { text: "Files", done: false },
+    { text: "Complete", done: false }
   ]);
 
   return (

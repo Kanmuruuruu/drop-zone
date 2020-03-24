@@ -1,5 +1,6 @@
 import React from "react";
 import "./ProgressBar.css";
+import Svg from "./Svg";
 
 const ProgressBar = ({ progressBar, changeProgress }) => {
   const makeAllDone = array => {
@@ -15,7 +16,7 @@ const ProgressBar = ({ progressBar, changeProgress }) => {
   };
 
   const makeActive = e => {
-    const id = e.target.id;
+    const id = e.currentTarget.id;
     progressBar[id].done = true;
     const array = makeAllDone(progressBar);
     changeProgress([...array]);
@@ -25,9 +26,16 @@ const ProgressBar = ({ progressBar, changeProgress }) => {
     <div className="container">
       <ul className="progressbar">
         {progressBar.map((item, index) => (
-          <li className={item.done && "active"} id={index} onClick={makeActive}>
-            {item.text}
-          </li>
+          <React.Fragment>
+            <li
+              className={item.done && "active"}
+              id={index}
+              onClick={makeActive}
+            >
+              <Svg />
+              {item.text}
+            </li>
+          </React.Fragment>
         ))}
       </ul>
     </div>
