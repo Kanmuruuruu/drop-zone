@@ -1,5 +1,7 @@
 # Start
 
+
+### Front
 yarn install
 
 cd back
@@ -12,14 +14,18 @@ yarn start
 
 This will start a react application on the port 3001
 
+
+### Back
+
 On an other terminal,
  
 cd back
 
 nodemon index.js
 
-
 This will start a server.
+
+## Use
 
 then use the dropzone to upload in your server.
 
