@@ -49,20 +49,20 @@ const Dropzone = () => {
     setFiles([...files])
   };
 
-  const onSubmit = e => {
+  const onSubmit = async e => {
     e.preventDefault();
     const form = new FormData();
     files.map(file => form.append("filesInput", file));
-    const request = new XMLHttpRequest();
-    request.open("POST", "http://localhost:8000/upload-files");
-    request.send(form);
-    request.onload = () => {
-      if (request.status === 201) {
-        console.log("Congrats");
-      } else {
-        console.log("Oups");
-      }
-    };
+
+    console.log('fetch');
+    const response  = await fetch("http://localhost:8000/upload-files", {
+      method: "POST",
+      headers: {
+        'Access-Control-Allow-Origin': 'http://localhost:3001'
+      },
+      body: form
+    });
+    console.log(await response.json());
   };
 
   return (
