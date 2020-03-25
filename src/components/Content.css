@@ -3,10 +3,10 @@
     padding: 15px 25px;
     background-color: #222222;
     color: white;
-    box-shadow: 3px 3px 1vh #444444, -3px -3px 1vh #111111;
+    box-shadow: 5px 5px 7px #444444, -5px -5px 7px #111111;
     border-radius: 20px;
 }
 
 .buttonNext:hover{
-    box-shadow: 3px 3px 1vh #111111, -3px -3px 1vh #444444;
+    box-shadow: 5px 5px 7px #111111, -5px -5px 7px #444444;
 }
