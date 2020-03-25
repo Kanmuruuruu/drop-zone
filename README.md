@@ -30,3 +30,6 @@ This will start a server.
 then use the dropzone to upload in your server.
 
 The Dropzone only accept jpg, jpeg, png and svg.
+
+
+Progress Bar, to train for making it in a real project

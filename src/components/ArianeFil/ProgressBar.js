@@ -2,7 +2,7 @@ import React from "react";
 import "./ProgressBar.css";
 import Svg from "./Svg";
 
-const ProgressBar = ({ progressBar, changeProgress }) => {
+const ProgressBar = ({ progressBar, changeProgressBar, changeProgress }) => {
   const makeAllDone = array => {
     // to get the id of the last done.
     const id = array.lastIndexOf(array.find(element => element.done === true));
@@ -15,11 +15,13 @@ const ProgressBar = ({ progressBar, changeProgress }) => {
     });
   };
 
-  const makeActive = e => {
+  const makeActive = (e,index) => {
+    console.log("bonjour");
     const id = e.currentTarget.id;
     progressBar[id].done = true;
     const array = makeAllDone(progressBar);
-    changeProgress([...array]);
+    changeProgressBar([...array]);
+    changeProgress(index);
   };
 
   return (
@@ -30,7 +32,7 @@ const ProgressBar = ({ progressBar, changeProgress }) => {
             <li
               className={item.done && "active"}
               id={index}
-              onClick={makeActive}
+              onClick={e => item.done === false ? makeActive(e, index) : null}
             >
               <Svg />
               {item.text}
