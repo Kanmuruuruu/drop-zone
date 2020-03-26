@@ -1,15 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import ProgressBar from "./ArianeFil/ProgressBar";
 import Files from "./Files";
-import './Content.css';
+import "./Content.css";
 
 const Content = () => {
   const [progress, setProgress] = useState(-1);
 
   const [progressBar, setProgressBar] = useState([
-    { text: "Login", done: false, component: Files },
+    {
+      text: "Login",
+      done: false,
+      component: <Files />
+    },
     { text: "Créer un nouveau patient", done: false },
-    { text: "Files", done: false, component: Files },
+    {
+      text: "Files",
+      done: false,
+      component: <Files />
+    },
     { text: "Complete", done: false }
   ]);
 
@@ -29,12 +37,11 @@ const Content = () => {
       />
 
       {progressBar.map((item, index) => {
-        return index === progress + 1 && item.component
-          ? item.component()
-          : null;
+        return index === progress + 1 && item.component ? item.component : null;
       })}
-
-      <div className="buttonNext" onClick={handleNext}>Next</div>
+      <div className="buttonNext" onClick={handleNext}>
+        Next
+      </div>
     </div>
   );
 };
