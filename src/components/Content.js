@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import ProgressBar from "./ArianeFil/ProgressBar";
 import Files from "./Files";
 import "./Content.css";
